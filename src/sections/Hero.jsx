@@ -1,11 +1,18 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useState } from "react";
 
 import { useMaskSettings } from "../../constants";
 import ComingSoon from "./ComingSoon";
 
 const Hero = () => {
-	const { initialMaskPos, initialMaskSize, maskPosition , maskSize } =
+
+	const [isVideoOpen, setIsVideoOpen] = useState(false);
+	const videoId = "VQRLujxTm3c";
+
+    
+    
+	const { initialMaskPos, initialMaskSize, maskPosition, maskSize } =
 		useMaskSettings();
 
 	useGSAP(() => {
@@ -55,29 +62,38 @@ const Hero = () => {
 	});
 
 	return (
-		<section className="hero-section">
-			<div className="size-full mask-wrapper">
+		<section className="hero-section relative">
+			<div className="size-full mask-wrapper relative z-50">
 				<img
 					src="/images/hero-bg.webp"
 					alt="background"
 					className="scale-out"
 				/>
+
 				<img
 					src="/images/hero-text.webp"
 					alt="hero-logo"
 					className="title-logo fade-out"
 				/>
+
 				<img
 					src="/images/watch-trailer.png"
 					alt="trailer"
 					className="trailer-logo fade-out"
 				/>
-				<div className="play-img fade-out">
+
+				<div
+					className="play-img fade-out cursor-pointer hover:scale-110 transition-transform "
+					onClick={() => {
+						console.log("Play button clicked!");
+						setIsVideoOpen(true);
+					}}
+				>
 					<img src="/images/play.png" alt="play" className="w-7 ml-1" />
 				</div>
 			</div>
 
-			<div>
+			<div className="relative z-10 pointer-events-none">
 				<img
 					src="/images/big-hero-text.svg"
 					alt="logo"
@@ -89,9 +105,36 @@ const Hero = () => {
 				<img src="/images/big-hero-text.svg" className="overlay-logo" />
 			</div>
 
+			{/* --- VIDEO PLAYER MODAL --- */}
+			{isVideoOpen && (
+				<div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 isolate">
+				
+					<div
+						className="absolute inset-0 z-0 cursor-pointer"
+						onClick={() => setIsVideoOpen(false)}
+						title="Click anywhere to close"
+					></div>
+
+					{/* The Video Player */}
+					<div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/20 relative bg-black">
+						<iframe
+							width="100%"
+							height="100%"
+							src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`}
+							title="YouTube video player"
+							className="w-full h-full border-none"
+							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowFullScreen
+						></iframe>
+					</div>
+				</div>
+			)}
+
 			<ComingSoon />
 		</section>
 	);
 };
+        
+        
 
 export default Hero;

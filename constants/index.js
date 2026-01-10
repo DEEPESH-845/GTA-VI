@@ -1,5 +1,10 @@
 import { useMediaQuery } from "react-responsive";
 
+export const heroVideo = {
+	title: "Grand Theft Auto VI Trailer 1",
+	videoId: "QdBZY2fkU-0", 
+};
+
 export const useMaskSettings = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
