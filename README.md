@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   </div>
 
-  <h3 align="center">GTA VI Website w/ GSAP</h3>
+  <h2 align="center">GTA VI Website w/ GSAP</h2>
 
  
 </div>
