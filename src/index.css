@@ -85,7 +85,7 @@ main {
       @apply rounded-full md:size-28 size-20 bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center;
     }
     .fake-logo-wrapper {
-      @apply absolute z-50 top-[27.5%] left-1/2 -translate-x-1/2 -translate-y-1/2;
+      @apply absolute z-50 xs:top-[9.5rem] sm:top-[12.8rem] md:top-[8.5rem] 2xl:top-44 3xl:top-48 left-1/2 -translate-x-1/2;
     }
     .overlay-logo {
       @apply size-full object-cover opacity-0 w-60 md:w-60 2xl:w-72 3xl:w-80;
