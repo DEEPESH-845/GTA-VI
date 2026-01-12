@@ -14,11 +14,11 @@ import Outro from "./sections/Outro";
 
 gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.defaults({
-	scrub: 1.1,
-	ease: "none",
-	anticipatePin: 1,
-});
+// ScrollTrigger.defaults({
+// 	scrub: 1.1,
+// 	ease: "none",
+// 	anticipatePin: 1,
+// });
 
 
 const App = () => {

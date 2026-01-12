@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 
 const navItems = [
-	{ name: "Jason Duval", img: "/images/Jason_and_Lucia_02_square.svg" },
-	{ name: "Lucia Caminos", img: "/images/Jason_and_Lucia_02_square.svg" },
+	{ name: "Jason Duval", img: "/images/jason-1.webp" },
+	{ name: "Lucia Caminos", img: "/images/lucia-2.webp" },
 	{ name: "Cal Hampton", img: "/images/Cal_Hampton_square.svg" },
 	{ name: "Boobie Ike", img: "/images/Boobie_Ike_square.svg" },
 	{ name: "Dre'Quan Priest", img: "/images/DreQuan_Priest_square.svg" },
@@ -80,25 +80,33 @@ const NavBar = () => {
 
 			<div
 				ref={menuRef}
-				// changed flex-col to grid grid-cols-2 for the split layout
 				className={`fixed inset-0 z-[90] grid grid-cols-2 bg-[radial-gradient(circle_at_top,#1b1c2a_0%,#0b0c14_65%)] transition-transform duration-300 ease-in-out ${
 					open ? "translate-y-0" : "-translate-y-full"
 				}`}
 			>
 				{/* --- NEW: BACKGROUND IMAGE LAYER --- */}
-				{/* This sits absolutely behind the text */}
-				{/* --- LEFT COLUMN: IMAGES --- */}
-				<div className="relative h-full w-full overflow-hidden border-r border-white/10">
-					{/* Default State: Show nothing or a placeholder if activeImage is null */}
+
+				<div className="hidden md:block relative h-full w-full overflow-hidden border-r border-white/10">
+					{/* 1. IDLE LOGO (Visible when NOT hovering) */}
+					<img
+						src="/images/logo.png" 
+						alt="Logo"
+						className={` object-contain transition-opacity duration-500 ease-in-out ${
+							activeImage ? "opacity-0" : "opacity-100"
+						}`}
+					/>
 
 					{navItems.map((item) => (
 						<img
 							key={item.name + "-img"}
 							src={item.img}
 							alt=""
-							className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-								activeImage === item.img ? "opacity-100" : "opacity-0"
-							}`}
+							className="absolute inset-0 w-full h-full object-cover"
+							style={{
+								opacity: activeImage === item.img ? 1 : 0,
+								transform: activeImage === item.img ? "scale(1.1)" : "scale(1)",
+								transition: "opacity 0.4s ease-in-out, transform 7s ease-out",
+							}}
 						/>
 					))}
 				</div>
@@ -108,7 +116,7 @@ const NavBar = () => {
 					{navItems.map((item, i) => (
 						<div
 							key={item.name}
-							className="relative z-20 text-[clamp(3rem,3.5vw,3.5rem)] font-long text-[#e6e7ee] leading-[1.05] cursor-pointer hover:text-amber-100 transition-colors w-fit uppercase" // added uppercase to match ref
+							className="relative z-20 text-[clamp(3rem,3.5vw,3.5rem)] font-long text-[#e6e7ee] leading-[1.05] cursor-pointer hover:text-amber-100 transition-colors w-fit uppercase"
 							ref={(el) => (itemsRef.current[i] = el)}
 							onMouseEnter={() => setActiveImage(item.img)}
 							onMouseLeave={() => setActiveImage(null)}
