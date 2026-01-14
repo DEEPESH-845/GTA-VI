@@ -6,15 +6,19 @@ const Final = () => {
 	const videoRef = useRef(null);
 
 	useGSAP(() => {
-		gsap.set(".final-content", { opacity: 0 });
+		gsap.set(".final-content", { opacity: 0 , scale: 0.98 , willChange: "opacity, transform" });
 
 		gsap.timeline({
+			defaults: { ease: "power1.inOut" },
 			scrollTrigger: {
 				trigger: ".final",
 				start: "top top",
 				end: "90% top",
-				scrub: true,
+				scrub: 0.65,
 				pin: true,
+				anticipatePin: 1,
+				smoothChildTiming: true,
+				invalidateOnRefresh: true,
 			},
 		});
 
