@@ -38,7 +38,7 @@ body {
   width: 100dvw;
   overflow-x: hidden;
   font-family: "Round", sans-serif;
-  background-color: #000;
+  background-color: #17172A;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -290,7 +290,7 @@ main {
 }
 
 .preloader-overlay {
-  background: #000;
+  background: #17172A;
   width: 100dvw;
   height: 100dvh;
   z-index: 99999;
