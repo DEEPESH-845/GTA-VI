@@ -22,16 +22,26 @@
   --font-round-bold: "Round Bold", sans-serif;
   --color-yellow: #fff9cb;
   --color-pink: #ffb0c4;
+  --color-rockstar-orange: #fcaf17;
+  --color-rockstar-red: #e84c22;
+  --color-platform-blue: #003791;
   --breakpoint-sm: 40rem;
   --breakpoint-xs: 20rem;
   --breakpoint-3xl: 120rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100dvw;
   overflow-x: hidden;
   font-family: "Round", sans-serif;
-  background-color: black;
+  background-color: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
@@ -45,6 +55,12 @@ main {
     rgb(18, 18, 24) 43.03%,
     rgb(17, 17, 23) 51.63%
   );
+  min-height: 100dvh;
+}
+
+::selection {
+  background: rgba(255, 249, 203, 0.3);
+  color: #fff;
 }
 
 @layer utilities {
@@ -56,6 +72,9 @@ main {
   }
   .abs-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
@@ -244,6 +263,110 @@ main {
 
 .animated-gradient-bg {
   background: linear-gradient(135deg, #1e2a52 0%, #6e4b91 100%);
+}
+
+
+/* ========== PRE-LOADER ========== */
+@keyframes preloaderBgPulse {
+  0%   { background: #3a3a3a; }
+  22%  { background: #3a3a3a; }
+  42%  { background: #b0b0b0; }
+  92%  { background: #3a3a3a; }
+  100% { background: #3a3a3a; }
+}
+
+@keyframes preloaderGlowPulse {
+  0%   { opacity: 0.2; }
+  22%  { opacity: 0.2; }
+  42%  { opacity: 1; }
+  92%  { opacity: 0.2; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes preloaderShimmer {
+  0%   { top: -40%; left: -40%; }
+  92%  { top: 80%; left: 105%; }
+  100% { top: 80%; left: 105%; }
+}
+
+.preloader-overlay {
+  background: #000;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 99999;
+  pointer-events: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.preloader-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.preloader-logo {
+  width: 100px;
+  height: 100px;
+  z-index: 99999;
+  background: #3a3a3a;
+  animation-name: preloaderBgPulse;
+  animation-duration: 2.15s;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  position: relative;
+  -webkit-mask-image: url("/images/preloader-logo.svg");
+  mask-image: url("/images/preloader-logo.svg");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.preloader-logo::after {
+  content: "";
+  background: linear-gradient(
+    232deg,
+    rgba(255, 255, 255, 0.9) 20%,
+    rgba(255, 255, 255, 0.3) 70%
+  );
+  filter: blur(5px);
+  z-index: -1;
+  width: 25%;
+  height: 60%;
+  animation-name: preloaderShimmer;
+  animation-duration: 2.15s;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  transform: skew(-45deg, 45deg);
+  pointer-events: none;
+}
+
+.preloader-glow {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 4px rgba(176, 176, 176, 0.5));
+  z-index: -2;
+  background: url("/images/preloader-logo.svg") 50% / contain no-repeat;
+  animation-name: preloaderGlowPulse;
+  animation-duration: 2.15s;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .jason-content {

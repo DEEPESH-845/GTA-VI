@@ -1,6 +1,6 @@
+import { useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-
 
 import NavBar from "./sections/NavBar";
 import Hero from "./sections/Hero";
@@ -11,37 +11,35 @@ import Lucia from "./sections/Lucia";
 import PostCard from "./sections/PostCard";
 import Final from "./sections/Final";
 import Outro from "./sections/Outro";
+import PreLoader from "./components/PreLoader";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ScrollTrigger.defaults({
-// 	scrub: 1.1,
-// 	ease: "none",
-// 	anticipatePin: 1,
-// });
 
 
 const App = () => {
-	return (
-		<main>
-			<NavBar />
-			<Hero />
+  const [ready, setReady] = useState(false);
 
-			<FirstVideo />
-      <Jason />
+  return (
+    <>
+      {!ready && <PreLoader onFinish={() => setReady(true)} />}
+      <main className={ready ? "" : "opacity-0"}>
+        <NavBar />
+        <Hero />
 
-      <SecondVideo />
-      <Lucia />
+        <FirstVideo />
+        <Jason />
 
-      <PostCard />
-      <Final />
+        <SecondVideo />
+        <Lucia />
 
-      <Outro />
+        <PostCard />
+        <Final />
 
-
-
-		</main>
-	);
+        <Outro />
+      </main>
+    </>
+  );
 };
 
 export default App;
