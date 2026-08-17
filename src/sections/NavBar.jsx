@@ -80,20 +80,18 @@ const NavBar = () => {
 
 			<div
 				ref={menuRef}
-				className={`fixed inset-0 z-[90] grid grid-cols-2 bg-[radial-gradient(circle_at_top,#1b1c2a_0%,#0b0c14_65%)] transition-transform duration-300 ease-in-out ${
-					open ? "translate-y-0" : "-translate-y-full"
-				}`}
+				className={`fixed inset-0 z-[90] grid grid-cols-2 bg-[radial-gradient(circle_at_top,#1b1c2a_0%,#0b0c14_65%)] transition-transform duration-300 ease-in-out ${open ? "translate-y-0" : "-translate-y-full"
+					}`}
 			>
 				{/* --- NEW: BACKGROUND IMAGE LAYER --- */}
 
 				<div className="hidden md:block relative h-full w-full overflow-hidden border-r border-white/10">
 					{/* 1. IDLE LOGO (Visible when NOT hovering) */}
 					<img
-						src="/images/logo.png" 
+						src="/images/logo.png"
 						alt="Logo"
-						className={` object-contain transition-opacity duration-500 ease-in-out ${
-							activeImage ? "opacity-0" : "opacity-100"
-						}`}
+						className={` absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${activeImage ? "opacity-0" : "opacity-100"
+							}`}
 					/>
 
 					{navItems.map((item) => (
