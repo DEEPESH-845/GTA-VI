@@ -9,12 +9,15 @@
 
 ### The scrollbar is the playhead.
 
-A cinematic landing page where nothing autoplays and nothing fades in on a timer.
-You scroll, the trailer plays. You scroll back, it rewinds — frame for frame.
+**Nothing here autoplays.** No timers, no "wait for it," no fade-ins firing while you
+look away. The trailer moves only when you do — scroll down and Vice City wakes up,
+scroll back and it rewinds frame for frame, stop halfway and it holds there, waiting.
+
+Nine acts. Two scrubbed trailers. One scrollbar doing all the work.
 
 <br />
 
-**[▶ Live demo](#)** · [Report a bug](https://github.com/DEEPESH-845/GTA-VI/issues)
+**[▶ Live demo](https://gta-vi-zeta-v1.vercel.app)** · [Report a bug](https://github.com/DEEPESH-845/GTA-VI/issues)
 
 <br />
 
@@ -30,9 +33,9 @@ You scroll, the trailer plays. You scroll back, it rewinds — frame for frame.
 
 ---
 
-## The idea
+## Why this exists
 
-Rockstar dropped the trailer. I wanted to know whether a browser could hold the same weight — so I
+Rockstar dropped the trailer. I wanted to know whether a browser could carry the same weight — so I
 rebuilt the reveal as a nine-act sequence you *drive* instead of watch.
 
 Two trailers are scrubbed by scroll position. The logo doesn't fade in, it gets carved out of black.
@@ -43,7 +46,7 @@ Roughly 60 assets, one preloader that hides all of them, and zero white flash on
 
 <br />
 
-## Run it
+## Take it for a spin
 
 ```bash
 git clone https://github.com/DEEPESH-845/GTA-VI.git
@@ -79,7 +82,7 @@ The rules I held to:
 
 <br />
 
-## What it cost me
+## What it cost me to get here
 
 | The problem | The fix |
 | :--- | :--- |
